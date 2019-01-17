@@ -1,9 +1,34 @@
-2
+1
+1 10
+aaaabbbbcc
 3 4
-aaab
-acca
-baaa
-3 3
-aaa
-abb
-aaa
+aaac
+abba
+aaaa
+3 4
+aaaa
+abba
+aaaa
+
+4 4
+aacc
+abbc
+abbc
+aacc
+4 5
+xaaaa
+aabca
+abcca
+aaaaa
+6 6
+aaaaaa
+bbbbba
+baaaba
+babbba
+baaaaa
+bbbbbb
+4 4
+aaaa
+abba
+abba
+aaaa
