@@ -23,14 +23,15 @@ ll dp[8000][2], opt[8000][2];
 ll rsq[8000];
 
 ll cost(ll a, ll b){
+  // cout<<"Query " << a << ' ' << b << ' ' << (b-a+1)*(rsq[b] - rsq[a-1]) << '\n';
   return (b-a+1)*(rsq[b] - rsq[a-1]);
 }
 
 void dnc(ll s, ll e, ll x, ll y, ll k){
   ll m=(s+e)/2;
-  dp[m][k] = INF;
+  dp[m][k] = -INF;
   for (int i=x;i<=y;++i){
-    if (dp[m][k] > dp[i][1-k] + cost(i+1,m)){
+    if (dp[m][k] < dp[i][1-k] + cost(i+1,m)){
       dp[m][k] = dp[i][1-k] + cost(i+1, m);
       opt[m][k] = i;
     }
@@ -42,15 +43,15 @@ void dnc(ll s, ll e, ll x, ll y, ll k){
 int main(){
   ios_base::sync_with_stdio(0);
   cin.tie(0);
-  // freopen("input.txt","r",stdin);
+  freopen("input.txt","r",stdin);
   cin>>N>>G;
   for (int i=1;i<=N;++i){cin>>rsq[i];rsq[i] += rsq[i-1];}
-  for (int i=1;i<=N;++i)dp[i][0] = INF;
+  for (int i=1;i<=N;++i)dp[i][0] = -INF;
   for (int i=1;i<=G;++i){
     dnc(1,N,0,N,i%2);
   }
   cout << dp[N][G%2] << '\n';
-  return 0;
+  // return 0;
   for (int i=1;i<=2;++i){
     for (int j=1;j<=N;++j)cout << dp[j][i] << ' ';cout << '\n';
   } 
