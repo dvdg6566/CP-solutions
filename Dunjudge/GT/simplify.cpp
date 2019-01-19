@@ -9,7 +9,7 @@ typedef double dl;
 #define pb push_back
 #define f first
 #define s second
-ll MOD = 10e9+7;
+ll MOD = 1e9+7;
 #define lb lower_bound
 #define ub upper_bound
 #define dst distance
@@ -49,7 +49,6 @@ ll N,E,a,b,w,wgt;
 ll ans;
 
 void run(){
-	if (cur.size() == 0)return;
 	//cout << "Running with " << cur.size() << '\n';
 	if (cur.size() == 1){
 		merge(cur[0]);
@@ -57,59 +56,38 @@ void run(){
 	}else if(cur.size() == 2){
 		//cout << "G\n";
 		if (equal(cur[0], cur[1])){
-			merge(cur[0]);
 			ans = (ans*2) % MOD;
 			wgt += w;
 		}else{
-			merge(cur[0]);
-			merge(cur[1]);
 			wgt += 2*w;
 		}
+		merge(cur[0]);
+		merge(cur[1]);
 	}else if (cur.size() == 3){
 		if (equal(cur[0], cur[1])){
 			if (equal(cur[0],cur[2])){
-				// cout << "A\n";
-				// All 3 equal
-				merge(cur[0]);
 				ans = (ans*3)%MOD;
 				wgt += w;
 			}else{
-				//cout << "B\n";
-				// 0,1 equal
-				merge(cur[0]);
-				merge(cur[2]);
 				ans = (ans*2) % MOD;
 				wgt += 2*w;
 			}
 		}else if (equal(cur[0], cur[2])){
-			// 0, 2 equal
-			//cout << "C\n";
-			merge(cur[0]);
-			merge(cur[1]);
 			ans = (ans*2) % MOD;
 			wgt += 2*w;
 		}else if (equal(cur[1], cur[2])){
-			// 1, 2 equal
-			//cout << "D\n";
-			merge(cur[0]);
-			merge(cur[1]);
 			ans = (ans*2) % MOD;
 			wgt += 2*w;
 		}else if (trip(cur[0], cur[1], cur[2])){
-			//cout << "E\n";
-			merge(cur[0]);
-			merge(cur[1]);
-			ans = (ans*3) % MOD;
 			wgt += 2*w;
+			ans = (ans*3) % MOD;
 		}else{
-			//cout << "F\n";
-			merge(cur[0]);
-			merge(cur[1]);
-			merge(cur[2]);
 			wgt += 3*w;
 		}
+		merge(cur[0]);
+	    merge(cur[1]);
+	    merge(cur[2]);
 	}
-	cout << cur.size() << ' ' << ans << '\n';
 	cur.clear();
 	w = -1;
 }
@@ -117,7 +95,7 @@ void run(){
 int main(){
 	ios_base::sync_with_stdio(0);
 	cin.tie(0);
-	freopen("input.txt","r",stdin);
+	//freopen("input.txt","r",stdin);
 	cin >> N >> E;
 	for (int i = 0; i < E; ++i){
 		cin >> a >> b >> w;
