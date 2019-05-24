@@ -18,6 +18,7 @@ ll MOD = 1e9+7;
 #define SZ(x) (int)x.size()
 #define ALL(x) x.begin(),x.end()
 #define MAXN 200100
+// 39 minutes
 
 ll pre1[MAXN], pre0[MAXN];
 ll post0[MAXN], post1[MAXN];
