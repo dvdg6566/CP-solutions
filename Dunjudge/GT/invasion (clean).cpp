@@ -24,7 +24,7 @@ int N,M,a,b;
 int cur;
 
 int fw[300100];
-void update(int x, int y, int v) { // incluse
+void update(int x, intd y, int v) { // incluse
 	x--;
 	for(; y; y-=y&(-y)) fw[y] += v;
 	for(; x; x-=x&(-x)) fw[x] -= v;
